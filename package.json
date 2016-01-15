@@ -1,0 +1,28 @@
+{
+  "name": "utyl",
+  "version": "0.0.1",
+  "description": "JS, Utility Library, to make life easier.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peek4y/utyl.git"
+  },
+  "keywords": [
+    "util",
+    "utility",
+    "helper"
+  ],
+  "author": "Gautham Ramachandran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peek4y/utyl/issues"
+  },
+  "homepage": "https://github.com/peek4y/utyl#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  }
+}
