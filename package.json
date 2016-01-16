@@ -1,6 +1,6 @@
 {
   "name": "utyl",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JS, Utility Library, to make life easier.",
   "main": "index.js",
   "scripts": {

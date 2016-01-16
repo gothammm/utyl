@@ -5,9 +5,6 @@ const Chai = require('chai');
 const expect = Chai.expect;
 const utyl = require('../lib/utyl');
 
-// Set to prototype
-utyl.Object.global();
-
 describe('test object cases', () => {
   it('should get value by path', (done) => {
     
@@ -22,10 +19,10 @@ describe('test object cases', () => {
       },
       x: ['1', '2', '3']
     };
-    
-    expect(someObject.path('a')).to.instanceof(Object);
-    expect(someObject.path('b')).to.be.null;
-    expect(someObject.path('a.b')).to.equal(1);
+    let helper = utyl.Object;
+    expect(helper.ptoo(someObject, 'a')).to.instanceof(Object);
+    expect(helper.ptoo(someObject, 'b')).to.be.null;
+    expect(helper.ptoo(someObject, 'a.b')).to.equal(1);
     done();
   });
   
@@ -43,7 +40,7 @@ describe('test object cases', () => {
         }
       }
     };
-    let result = someObject.paths();
+    let result = utyl.Object.otop(someObject);
     expect(result).to.have.length(5);
     expect(result[0].path).to.equal('a');
     expect(result[result.length - 1].path).to.equal('f.g.z');
@@ -61,7 +58,7 @@ describe('test object cases', () => {
         nestedObject = obj;
       }
     }
-    let result = nestedObject.paths();
+    let result = utyl.Object.otop(nestedObject);
     expect(result).to.have.length(1);
     expect(result[0].value).to.equal(10);
     done();
