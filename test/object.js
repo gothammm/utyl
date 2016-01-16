@@ -63,5 +63,25 @@ describe('test object cases', () => {
     expect(result[0].value).to.equal(10);
     done();
   });
+  
+  it('should extend from another object', (done) => {
+    let target = {
+      a: 1,
+      b: { 
+        c: 5
+      }
+    };
+    let source = {
+      b: {
+        c: 10
+      }
+    };
+    
+    let result = utyl.Object.deepExtend(target, source);
+    expect(result).to.not.be.null;
+    expect(result).to.be.instanceof(Object);
+    expect(result.b.c).to.equal(10);
+    done();
+  });
 });
 
