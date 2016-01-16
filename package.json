@@ -1,6 +1,6 @@
 {
   "name": "utyl",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JS, Utility Library, to make life easier.",
   "main": "index.js",
   "scripts": {
@@ -24,5 +24,8 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "mocha": "^2.3.4"
+  },
+  "dependencies": {
+    "ramda": "^0.19.1"
   }
 }
