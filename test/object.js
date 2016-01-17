@@ -83,5 +83,38 @@ describe('test object cases', () => {
     expect(result.b.c).to.equal(10);
     done();
   });
+  
+  it('should extend level 2 property', (done) => {
+    let target = {
+      a: {
+        b: {
+          c: 10
+        }
+      },
+      d: {
+        e: {
+          f: 100029
+        }
+      }
+    };
+    let source = {
+      a: {
+        b: {
+          c: 120
+        }
+      },
+      d: {
+        e: {
+          f: 100
+        }
+      }
+    };
+    
+    let result =utyl.Object.deepExtend(target, source);
+    expect(result).to.not.be.undefined;
+    expect(result.a.b.c).to.equal(120);
+    expect(result.d.e.f).to.equal(100);
+    done();
+  });
 });
 
