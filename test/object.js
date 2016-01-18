@@ -7,8 +7,8 @@ const utyl = require('../lib/utyl');
 
 describe('test object cases', () => {
   it('should get value by path', (done) => {
-    
-    let someObject = { 
+
+    let someObject = {
       a: {
         b: 1
       },
@@ -25,15 +25,15 @@ describe('test object cases', () => {
     expect(helper.ptoo(someObject, 'a.b')).to.equal(1);
     done();
   });
-  
+
   it('should get all possible paths of an object', (done) => {
     let someObject = {
       a: 1,
       b: { c: 1 },
-      d: { 
+      d: {
         e: () => true
       },
-      f: { 
+      f: {
         g: {
           h: 10,
           z: 20
@@ -46,7 +46,7 @@ describe('test object cases', () => {
     expect(result[result.length - 1].path).to.equal('f.g.z');
     done();
   });
-  
+
   it('should get paths for nested object', (done) => {
     let nestedObject = {};
     for (var i = 10; i >= 0; i--) {
@@ -63,11 +63,11 @@ describe('test object cases', () => {
     expect(result[0].value).to.equal(10);
     done();
   });
-  
+
   it('should extend from another object', (done) => {
     let target = {
       a: 1,
-      b: { 
+      b: {
         c: 5
       }
     };
@@ -76,14 +76,14 @@ describe('test object cases', () => {
         c: 10
       }
     };
-    
+
     let result = utyl.Object.deepExtend(target, source);
     expect(result).to.not.be.null;
     expect(result).to.be.instanceof(Object);
     expect(result.b.c).to.equal(10);
     done();
   });
-  
+
   it('should extend level 2 property', (done) => {
     let target = {
       a: {
@@ -109,8 +109,8 @@ describe('test object cases', () => {
         }
       }
     };
-    
-    let result =utyl.Object.deepExtend(target, source);
+
+    let result = utyl.Object.deepExtend(target, source);
     expect(result).to.not.be.undefined;
     expect(result.a.b.c).to.equal(120);
     expect(result.d.e.f).to.equal(100);
