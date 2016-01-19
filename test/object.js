@@ -20,9 +20,22 @@ describe('test object cases', () => {
       x: ['1', '2', '3']
     };
     let helper = utyl.Object;
-    expect(helper.ptoo(someObject, 'a')).to.instanceof(Object);
-    expect(helper.ptoo(someObject, 'b')).to.be.null;
-    expect(helper.ptoo(someObject, 'a.b')).to.equal(1);
+    expect(helper.path(someObject, 'a')).to.instanceof(Object);
+    expect(helper.path(someObject, 'b')).to.be.null;
+    expect(helper.path(someObject, 'a.b')).to.equal(1);
+    done();
+  });
+  
+  it('should set value for a given object path', (done) => {
+    let temp = {};
+    
+    let helper = utyl.Object;
+    
+    temp = helper.path(temp, 'a.b', 10);
+    expect(temp).to.instanceof(Object);
+    expect(temp.a).to.instanceof(Object);
+    expect(temp.a.b).to.not.be.undefined;
+    expect(temp.a.b).to.equal(10);
     done();
   });
 
