@@ -32,10 +32,37 @@ describe('test object cases', () => {
     let helper = utyl.Object;
     
     temp = helper.path(temp, 'a.b', 10);
-    expect(temp).to.instanceof(Object);
-    expect(temp.a).to.instanceof(Object);
+    expect(temp).to.be.instanceof(Object);
+    expect(temp.a).to.be.instanceof(Object);
     expect(temp.a.b).to.not.be.undefined;
     expect(temp.a.b).to.equal(10);
+    done();
+  });
+  
+  it('should set function value for a given object path', (done) => {
+    let temp = {};
+    let helper = utyl.Object;
+    
+    temp = helper.path(temp, 'x.y', () => true);
+    expect(temp).to.be.an.instanceof(Object);
+    expect(temp.x).to.be.an.instanceof(Object);
+    expect(temp.x.y instanceof Function).to.be.true;
+    done();
+  });
+  
+  it('should set a value to an already existing object for a given path', (done) => {
+    let temp = {
+      a: () => true,
+      b: {
+        c: 10
+      }
+    };
+    let helper = utyl.Object;
+    
+    temp = helper.path(temp, 'a', 'xyz');
+    temp = helper.path(temp, 'b.c', 20);
+    expect(temp.a).to.equal('xyz');
+    expect(temp.b.c).to.equal(20);
     done();
   });
 
